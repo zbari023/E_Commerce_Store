@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
-from .models import Product , ProductsImage , Brand , Reviews
+from .models import Product , ProductsImages , Brand , Reviews
 # Create your views here.
 
 
