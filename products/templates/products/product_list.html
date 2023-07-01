@@ -64,7 +64,7 @@
                                 <button class="product-wish wish">
                                     <i class="fas fa-heart"></i>
                                 </button>
-                                <a class="product-image" href="{% url 'products:product_detail' product.id %}">
+                                <a class="product-image" href="{% url 'products:product_detail' product.slug %}">
                                     <img src="{{product.image.url}}" alt="product">
                                 </a>
                                 <div class="product-widget">
@@ -83,7 +83,7 @@
                                     <a href="product-video.html">(3)</a>
                                 </div>
                                 <h6 class="product-name">
-                                    <a href="{% url 'products:product_detail' product.id %}">{{product}}</a>
+                                    <a href="{% url 'products:product_detail' product.slug %}">{{product}}</a>
                                 </h6>
                                 <h6 class="product-price">
                                     
