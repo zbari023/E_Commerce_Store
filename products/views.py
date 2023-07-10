@@ -21,3 +21,7 @@ class BrandDetail(generic.ListView):
         brand = Brand.objects.get(slug=self.kwargs['slug'])
         queryset = Product.objects.filter(brand=brand)
         return queryset
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["brand"] = Brand.objects.get(slug=self.kwargs['slug'])
+        return context
