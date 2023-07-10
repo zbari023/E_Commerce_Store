@@ -35,6 +35,8 @@ class Product(models.Model):
 class ProductsImages(models.Model):
     product = models.ForeignKey(Product,verbose_name=_('product'),related_name='product_images',on_delete=models.CASCADE)
     image = models.ImageField(_('image'),upload_to='product_images')
+    def __str__(self):
+        return f"{self.product}"
 
 class Brand(models.Model):
     name = models.CharField(_('name'),max_length=100)
