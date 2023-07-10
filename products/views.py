@@ -14,5 +14,10 @@ class ProductDetail(generic.DetailView):
 class BrandList(generic.ListView):
     model = Brand
     
-class BrandDetail(generic.DetailView):
-    model = Brand
+class BrandDetail(generic.ListView):
+    model = Product
+    template_name = 'products/brand_detail.html'
+    def get_queryset(self):
+        brand = Brand.objects.get(slug=self.kwargs['slug'])
+        queryset = Product.objects.filter(brand=brand)
+        return queryset
