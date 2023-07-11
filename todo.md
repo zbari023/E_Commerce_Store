@@ -1,0 +1,17 @@
+- sql
+- add review
+- add orders
+- add cart
+- add users
+- add api
+- queryset api
+- caching
+- celery
+- redis
+- docker
+- coupons
+- payment
+- charts
+- deploy
+- ajax
+- translation
