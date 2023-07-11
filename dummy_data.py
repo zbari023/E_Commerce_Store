@@ -38,4 +38,4 @@ def seed_product(n):
 
 # seed_brand(24)
 
-seed_product(2)
+seed_product(44)

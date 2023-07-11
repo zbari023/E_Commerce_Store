@@ -6,6 +6,8 @@ from .models import Product , ProductsImages , Brand , Reviews
 
 class ProductList(generic.ListView):
     model = Product
+    paginate_by=100
+    
 
 
 class ProductDetail(generic.DetailView):
