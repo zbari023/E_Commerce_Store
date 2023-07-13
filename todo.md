@@ -1,4 +1,5 @@
 - sql
+- home
 - add review
 - add orders
 - add cart
