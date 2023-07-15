@@ -8,8 +8,8 @@ from django.utils.text import slugify
 
 FLAG_TYPE = (
     ('New', 'New'),
-    ('sale', 'sale'),
-    ('feature', 'feature'),
+    ('Sale', 'Sale'),
+    ('Feature', 'Feature'),
 )
 
 # Create your models here.
