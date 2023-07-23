@@ -4,6 +4,11 @@ from .models import Product , ProductsImages , Brand , Reviews
 # Create your views here.
 
 
+
+
+def post_list_debug(request):
+    data = Product.objects.all()
+    return render(request,'products/debug.html', {'data':data})
 class ProductList(generic.ListView):
     model = Product
     paginate_by=100
