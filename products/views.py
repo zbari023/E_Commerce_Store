@@ -7,8 +7,14 @@ from .models import Product , ProductsImages , Brand , Reviews
 
 
 def post_list_debug(request):
-    data = Product.objects.all()
+   # data = Product.objects.all()
+    data = Product.objects.filter(price__lt=30.6)    # filter return as list 
     return render(request,'products/debug.html', {'data':data})
+
+
+
+
+
 class ProductList(generic.ListView):
     model = Product
     paginate_by=100
