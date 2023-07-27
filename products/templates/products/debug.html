@@ -9,16 +9,11 @@
     <h1>Posts</h1>
 
 <ul>
-
-    <li> {{data}} </li>
-    {% comment  %}
     {% for post in data  %}
     
         <li>{{post}} - {{post.price}} -{{post.brand}}</li>
     
     {% endfor %}
-    
-    {% endcomment %}
 </ul>
 </body>
 </html>

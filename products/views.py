@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views import generic
 from .models import Product , ProductsImages , Brand , Reviews
 from django.db.models.aggregates import Count , Sum , Avg , Max ,Min
+from django.db.models import F , Q , Value , Func
 # Create your views here.
 
 
@@ -36,6 +37,10 @@ class ProductDetail(generic.DetailView):
 class BrandList(generic.ListView):
     model = Brand
     paginate_by=50
+    def get_queryset(self):
+        object_list = Brand.objects.annotate(posts_count=Count('product_brand'))
+        return object_list
+    
     
     
 class BrandDetail(generic.ListView):
