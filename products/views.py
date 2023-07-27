@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views import generic
 from .models import Product , ProductsImages , Brand , Reviews
+from django.db.models.aggregates import Count , Sum , Avg , Max ,Min
 # Create your views here.
 
 
@@ -10,7 +11,9 @@ def post_list_debug(request):   # QuerySet API reference
     # data = Product.objects.all()
     # data = Product.objects.filter(price__lt=30.6)    # filter return as list 
     # data = Product.objects.all().order_by('name')
-    data = Product.objects.select_related('brand').all()
+    # data = Product.objects.select_related('brand').all() # onetoone and onetomany
+    data = Product.objects.aggregate(Count('id'))
+    
     
     
     
