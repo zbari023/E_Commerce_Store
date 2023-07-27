@@ -76,7 +76,7 @@
                     <li>
                         <a class="suggest-card" href="shop-4column.html">
                             <img src="{{brand.image.url}}" alt="suggest">
-                            <h5>{{brand}}<span>34 items</span></h5>
+                            <h5>{{brand}}<span>{{brand.posts_count}} items</span></h5>
                         </a>
                     </li>
                     {% endfor %}
@@ -388,7 +388,7 @@
                         </div>
                         <div class="brand-meta">
                             <h4>{{object}}</h4>
-                            <p>(45 items)</p>
+                            <p>({{object.posts_count}} items)</p>
                         </div>
                         </div>
                     {% endfor %}
