@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import generic
+from .forms import ReviewForm
 from .models import Product , ProductsImages , Brand , Reviews
 from django.db.models.aggregates import Count , Sum , Avg , Max ,Min
 from django.db.models import F , Q , Value , Func
@@ -25,14 +26,31 @@ def post_list_debug(request):   # QuerySet API reference
 
 
 
+
 class ProductList(generic.ListView):
     model = Product
     paginate_by=100
-    
+
 
 
 class ProductDetail(generic.DetailView):
     model = Product
+    
+    
+
+
+def add_review(request,slug):
+    product = Product.objects.get(slug=slug)
+    form = ReviewForm(request.POST)
+    if form.is_valid():
+        myform = form.save(commit=False)
+        myform.user = request.user
+        myform.product = product
+        myform.save()
+        return redirect(f'/products/{product.slug}')
+
+
+
     
 class BrandList(generic.ListView):
     model = Brand
@@ -43,13 +61,16 @@ class BrandList(generic.ListView):
     
     
     
+    
 class BrandDetail(generic.ListView):
     model = Product
     template_name = 'products/brand_detail.html'
+    
     def get_queryset(self):
         brand = Brand.objects.get(slug=self.kwargs['slug'])
         queryset = Product.objects.filter(brand=brand)
         return queryset
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["brand"] = Brand.objects.filter(slug=self.kwargs['slug']).annotate(posts_count=Count('product_brand'))[0]

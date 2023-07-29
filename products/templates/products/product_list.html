@@ -69,25 +69,25 @@
                                 </a>
                                 <div class="product-widget">
                                     <a title="Product Compare" href="compare.html" class="fas fa-random"></a>
-                                    <a title="Product Video" href="https://youtu.be/9xzcVxSBbG8" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
+                                    <a title="Product Video" href="{{product.video}}" class="venobox fas fa-play" data-autoplay="true" data-vbtype="video"></a>
                                     <a title="Product View" href="#" class="fas fa-eye" data-bs-toggle="modal" data-bs-target="#product-view"></a>
                                 </div>
                             </div>
                             <div class="product-content">
                                 <div class="product-rating">
-                                    <i class="active icofont-star"></i>
-                                    <i class="active icofont-star"></i>
-                                    <i class="active icofont-star"></i>
-                                    <i class="active icofont-star"></i>
-                                    <i class="icofont-star"></i>
-                                    <a href="product-video.html">(3)</a>
+                                    <i class="icofont-star {% if product.get_avg_rate.avg > 0 %} active {% endif %}"></i>
+                                    <i class="icofont-star {% if product.get_avg_rate.avg > 1 %} active {% endif %}"></i>
+                                    <i class="icofont-star {% if product.get_avg_rate.avg > 2 %} active {% endif %}"></i>
+                                    <i class="icofont-star {% if product.get_avg_rate.avg > 3 %} active {% endif %}"></i>
+                                    <i class="icofont-star {% if product.get_avg_rate.avg > 4 %} active {% endif %}"></i>
+                                    <a href="product-video.html">({{product.product_review.all|length}})</a>
                                 </div>
                                 <h6 class="product-name">
                                     <a href="{% url 'products:product_detail' product.slug %}">{{product}}</a>
                                 </h6>
                                 <h6 class="product-price">
                                     
-                                    <span>${{product.price}}<small>/</small></span>
+                                    <span>${{product.price}}<small>/piece</small></span>
                                 </h6>
                                 <button class="product-add" title="Add to Cart">
                                     <i class="fas fa-shopping-basket"></i>

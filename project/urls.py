@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 from settings.views import home
 
 urlpatterns = [
+    path("accounts/", include("django.contrib.auth.urls")),
     path('admin/', admin.site.urls),
     path('products/', include('products.urls',namespace='products}')),
     path('',home),

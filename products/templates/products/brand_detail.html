@@ -34,12 +34,12 @@
             <a href="#"><img src="{{brand.image.url}}" alt="brand"></a>
             <a href="#"><h3>{{brand}}</h3></a>
             <ul>
-                <li class="fas fa-star active"></li>
-                <li class="fas fa-star active"></li>
-                <li class="fas fa-star active"></li>
-                <li class="fas fa-star active"></li>
-                <li class="fas fa-star"></li>
-                <li class="total">(163 ratings)</li>
+                <li class="fas fa-star {% if brand.get_avg_rate > 0 %} active {% endif %}"></li>
+                <li class="fas fa-star {% if brand.get_avg_rate > 1 %} active {% endif %}"></li>
+                <li class="fas fa-star {% if brand.get_avg_rate > 2 %} active {% endif %}"></li>
+                <li class="fas fa-star {% if brand.get_avg_rate > 3 %} active {% endif %}"></li>
+                <li class="fas fa-star {% if brand.get_avg_rate > 4 %} active {% endif %}"></li>
+                <li class="total">({{brand.get_rate_count}} ratings)</li>
             </ul>
             <p>({{brand.posts_count}} items)</p>
         </div>
@@ -98,12 +98,12 @@
                             </div>
                             <div class="product-content">
                                 <div class="product-rating">
-                                    <i class="active icofont-star"></i>
-                                    <i class="active icofont-star"></i>
-                                    <i class="active icofont-star"></i>
-                                    <i class="active icofont-star"></i>
-                                    <i class="icofont-star"></i>
-                                    <a href="product-video.html">(3)</a>
+                                    <i class="icofont-star {% if product.get_avg_rate.avg > 0 %} active {% endif %}"></i>
+                                    <i class="icofont-star {% if product.get_avg_rate.avg > 1 %} active {% endif %}"></i>
+                                    <i class="icofont-star {% if product.get_avg_rate.avg > 2 %} active {% endif %}"></i>
+                                    <i class="icofont-star {% if product.get_avg_rate.avg > 3 %} active {% endif %}"></i>
+                                    <i class="icofont-star {% if product.get_avg_rate.avg > 4 %} active {% endif %}"></i>
+                                    <a href="product-video.html">({{product.product_review.all|length}})</a>
                                 </div>
                                 <h6 class="product-name">
                                     <a href="{% url 'products:product_detail' product.slug %}">{{product}}</a>
