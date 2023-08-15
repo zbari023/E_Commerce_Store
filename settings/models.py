@@ -22,3 +22,8 @@ class Company(models.Model):
         return self.name
     
     
+class DeliveryFee(models.Model):
+    fee = models.FloatField()
+    def __str__(self):
+        return self.fee
+    
