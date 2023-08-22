@@ -47,7 +47,11 @@ class Cart(models.Model):
     def __str__(self):
         return str(self.user)
 
-    
+    def cart_total(self):
+        total = 0
+        for product in self.cart_detail.all():
+            total += product.total
+        return total
     
 class CartDetail(models.Model):
     cart = models.ForeignKey(Cart, related_name='cart_detail' , on_delete=models.CASCADE)
