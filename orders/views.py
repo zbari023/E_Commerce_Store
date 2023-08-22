@@ -8,4 +8,3 @@ from .models import Order
 
 class OrderList(ListView):
     model = Order
-    
