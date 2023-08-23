@@ -143,7 +143,7 @@
                                                 <tbody>
                                                     {% for item in object.order_detail.all %}
                                                         <tr>
-                                                        <td class="table-serial"><h6>01</h6></td>
+                                                        <td class="table-serial"><h6>{{ forloop.counter }}</h6></td>
                                                         <td class="table-image"><img src="{{item.product.image.url}}" alt="product"></td>
                                                         <td class="table-name"><h6>{{item.product}}</h6></td>
                                                         <td class="table-price"><h6>${{item.price}}</h6></td>
