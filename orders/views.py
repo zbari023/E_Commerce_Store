@@ -4,10 +4,11 @@ from django.shortcuts import render , redirect
 from django.views.generic import ListView
 from .models import Order , Cart ,CartDetail
 from products.models import Product
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 
-class OrderList(ListView):
+class OrderList(LoginRequiredMixin, ListView):
     model = Order
     
     def get_queryset(self):
