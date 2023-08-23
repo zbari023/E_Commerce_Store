@@ -10,7 +10,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 class OrderList(LoginRequiredMixin, ListView):
     model = Order
-    
+    paginate_by = 1
     def get_queryset(self):
         queryset = super().get_queryset()    # return all orders
         queryset = queryset.filter(user=self.request.user) # filter the current user
