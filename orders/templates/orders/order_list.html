@@ -35,7 +35,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="orderlist-filter">
-                            <h5>total order <span>- (4)</span></h5>
+                            <h5>total order <span>- ({{object_list|length}})</span></h5>
                             <div class="filter-short">
                                 <label class="form-label">short by:</label>
                                 <select class="form-select">
@@ -66,16 +66,19 @@
                                                     <i class="icofont-check"></i>
                                                     <span>order recieved</span>
                                                 </li>
-                                                <li class="order-track-item">
-                                                    <i class="icofont-close"></i>
+
+                                                <li class="order-track-item {% if object.status == 'Processed' or object.status == 'Shipped' or object.status == 'Delivered' %} active {% endif %}">
+                                                    <i class="icofont-{% if object.status == 'Processed' or object.status == 'Shipped' or object.status == 'Delivered' %}check{% else %}close{% endif %}"></i>
                                                     <span>order processed</span>
                                                 </li>
-                                                <li class="order-track-item">
-                                                    <i class="icofont-close"></i>
+
+                                                <li class="order-track-item {% if object.status == 'Shipped' or object.status == 'Delivered' %} active {% endif %}">
+                                                    <i class="icofont-{% if object.status == 'Shipped' or object.status == 'Delivered' %}check{% else %}close{% endif %}"></i>
                                                     <span>order shipped</span>
                                                 </li>
-                                                <li class="order-track-item">
-                                                    <i class="icofont-close"></i>
+
+                                                <li class="order-track-item {% if object.status == 'Delivered' %} active {% endif %}">
+                                                    <i class="icofont-{% if object.status == 'Delivered' %}check{% else %}close{% endif %}"></i>
                                                     <span>order delivered</span>
                                                 </li>
                                             </ul>
