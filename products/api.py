@@ -15,11 +15,11 @@ def product_list_api(request):
     
     
 
-@api_view(['GET'])
+""" @api_view(['GET'])
 def product_detail_api(request,product_id):
     querset = Product.objects.get(id=product_id)   # to get just a product
     data = ProductSerializer(querset,context={'request':request}).data 
-    return Response({'data':data})
+    return Response({'data':data}) """
 
 
 # class-based view 
@@ -27,6 +27,11 @@ def product_detail_api(request,product_id):
 class ProductListAPI(generics.ListAPIView):
     queryset = Product.objects.all()[:10]
     serializer_class = ProductSerializer
+
+class ProductDetailAPI(generics.RetrieveAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductSerializer
+
 
 class BrandListAPI(generics.ListAPIView):
     queryset = Brand.objects.all()
