@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'settings',
     'debug_toolbar',
     'orders',
+    'rest_framework',
     
 ]
 
