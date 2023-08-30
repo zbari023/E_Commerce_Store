@@ -10,7 +10,7 @@ from .models import Product, Brand
 @api_view(['GET'])
 def product_list_api(request):
     products = Product.objects.all()[:10]     # as list of products
-    data = ProductSerializer(products, many=True).data  # the list to json_data of products
+    data = ProductSerializer(products, many=True,context={'request':request}).data  # the list to json_data of products
     return Response({'data':data})
     
     
