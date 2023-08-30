@@ -7,11 +7,11 @@ from .models import Product, Brand
 
 
 
-@api_view(['GET'])
+""" @api_view(['GET'])
 def product_list_api(request):
     products = Product.objects.all()[:10]     # as list of products
     data = ProductSerializer(products, many=True,context={'request':request}).data  # the list to json_data of products
-    return Response({'data':data})
+    return Response({'data':data}) """
     
     
 
@@ -22,7 +22,12 @@ def product_detail_api(request,product_id):
     return Response({'data':data})
 
 
-# Brand class-based view 
+# class-based view 
+
+class ProductListAPI(generics.ListAPIView):
+    queryset = Product.objects.all()[:10]
+    serializer_class = ProductSerializer
+
 class BrandListAPI(generics.ListAPIView):
     queryset = Brand.objects.all()
     serializer_class = BrandSerializer
