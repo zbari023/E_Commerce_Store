@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import ProductList , ProductDetail , BrandList , BrandDetail , post_list_debug, add_review
-from api import product_list_api
+from .api import product_list_api
 
 app_name = 'products'
 
