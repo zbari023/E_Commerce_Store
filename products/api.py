@@ -18,7 +18,7 @@ def product_list_api(request):
 @api_view(['GET'])
 def product_detail_api(request,product_id):
     querset = Product.objects.get(id=product_id)   # to get just a product
-    data = ProductSerializer(querset).data 
+    data = ProductSerializer(querset,context={'request':request}).data 
     return Response({'data':data})
 
 
