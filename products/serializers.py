@@ -4,12 +4,14 @@ from .models import Product , Brand
 
 class ProductSerializer(serializers.ModelSerializer):
     brand = serializers.StringRelatedField()
+    review_count = serializers.SerializerMethodField()
     class Meta:
         model = Product
         fields = '__all__'
         
-        
-
+    def get_review_count(self,object):
+        review = object.product_review.all().count()
+        return review
 
 class BrandSerializer(serializers.ModelSerializer):
     class Meta:
