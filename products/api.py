@@ -24,7 +24,7 @@ def product_detail_api(request,product_id):
 
 # class-based view 
 
-class ProductListAPI(generics.ListAPIView):
+class ProductListAPI(generics.ListCreateAPIView):
     queryset = Product.objects.all()[:10]
     serializer_class = ProductSerializer
 
