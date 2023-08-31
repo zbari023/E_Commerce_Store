@@ -16,7 +16,11 @@ class ProductSerializer(serializers.ModelSerializer):
         return review
     def get_avg_rate(self,object):
         avg = object.product_review.aggregate(avg=Avg('rate'))
-        return avg
+        if not avg['avg'] :
+            result = 0
+        else:
+            result = round(avg['avg'],2)
+        return result
 
 
 class BrandSerializer(serializers.ModelSerializer):
