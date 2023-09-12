@@ -7,6 +7,7 @@ from .models import Product, Brand
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 from .filters import ProductFilter
+from .pagination import MyPagenation
 
 """ @api_view(['GET'])
 def product_list_api(request):
@@ -31,9 +32,12 @@ class ProductListAPI(generics.ListAPIView):
     filter_backends = [DjangoFilterBackend,filters.OrderingFilter]
     filterset_fields = ['name','brand', 'flag','price']
     filterset_class = ProductFilter
+    ordering_fields = ['price', 'flag']
     # search_fields = ['name', 'subtitle']   # custom filter
     # filter_backends = [filters.OrderingFilter]
-    ordering_fields = ['price', 'flag']
+    pagination_class = MyPagenation
+    
+    
 
 class ProductDetailAPI(generics.RetrieveAPIView):
     queryset = Product.objects.all()
