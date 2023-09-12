@@ -7,7 +7,7 @@ class ProductFilter(filters.FilterSet):
         model = Product
         fields ={
             'name': ['contains'],
-            'price': ['range'],
+            'price': ['range','lte','gte'],
             'flag': ['exact'],
         
             
