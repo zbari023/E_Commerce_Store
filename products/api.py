@@ -24,11 +24,11 @@ def product_detail_api(request,product_id):
 
 # class-based view 
 
-class ProductListAPI(generics.ListCreateAPIView):
+class ProductListAPI(generics.ListAPIView):
     queryset = Product.objects.all()[:10]
     serializer_class = ProductSerializer
 
-class ProductDetailAPI(generics.RetrieveUpdateAPIView):
+class ProductDetailAPI(generics.RetrieveAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
@@ -38,6 +38,6 @@ class BrandListAPI(generics.ListAPIView):
     serializer_class = BrandSerializer
     
 
-class BrandDetailAPI(generics.RetrieveUpdateDestroyAPIView):
+class BrandDetailAPI(generics.RetrieveAPIView):
     queryset = Brand.objects.all()
     serializer_class = BrandDetailSerializer
