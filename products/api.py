@@ -8,6 +8,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import filters
 from .filters import ProductFilter
 from .pagination import MyPagenation
+from rest_framework.permissions import IsAuthenticated
 
 """ @api_view(['GET'])
 def product_list_api(request):
@@ -36,6 +37,7 @@ class ProductListAPI(generics.ListAPIView):
     # search_fields = ['name', 'subtitle']   # custom filter
     # filter_backends = [filters.OrderingFilter]
     pagination_class = MyPagenation
+    permission_classes = [IsAuthenticated]
     
     
 
