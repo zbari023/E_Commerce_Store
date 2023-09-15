@@ -9,5 +9,3 @@ urlpatterns = [
     path('add_to_cart', add_to_cart),
     path('api/<str:username>/cart',CartDetailCreateDeleteAPI.as_view(),)
 ]
-
-  

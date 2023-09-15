@@ -12,6 +12,7 @@ from products.models import Product
 
 
 class CartDetailCreateDeleteAPI(generics.GenericAPIView):
+    serializer_class = CartSerializer
     def get(self,request,*args,**kwargs):
         user = User.objects.get(username=self.kwargs['username'])
         cart , created = Cart.objects.get_or_create(user=user,completed=False)
