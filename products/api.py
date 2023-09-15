@@ -37,14 +37,14 @@ class ProductListAPI(generics.ListAPIView):
     # search_fields = ['name', 'subtitle']   # custom filter
     # filter_backends = [filters.OrderingFilter]
     pagination_class = MyPagenation
-    permission_classes = [IsAuthenticated]
+   # permission_classes = [IsAuthenticated]
     
     
 
 class ProductDetailAPI(generics.RetrieveAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    permission_classes = [IsAuthenticated]
+   # permission_classes = [IsAuthenticated]
 
 
 class BrandListAPI(generics.ListAPIView):
