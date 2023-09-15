@@ -1,9 +1,9 @@
 from rest_framework import generics
-from .models import *
-from .serializers import CartDetailSerializer , CartSerializer
-from django.contrib.auth.models import User
 from rest_framework.response import Response
-from products.models import *
+from .models import Cart , CartDetail , Order , OrderDetail
+from .serializers import CartDetailSerializer , CartSerializer , OrderDetailSerializer,OrderSerializer
+from django.contrib.auth.models import User
+from products.models import Product
 
 
 
@@ -38,3 +38,39 @@ class CartDetailCreateDeleteAPI(generics.GenericAPIView):
         cart_detail.delete()
         return Response({'status':200,'message':'Product was added seccessfuly deleted'})
 
+class OrderListAPI(generics.ListAPIView):
+    serializer_class = OrderSerializer
+    queryset = Order.objects.all()
+    
+    def list(self,request,*args, **kwargs):
+        user = User.objects.get(username=self.kwargs['username'])
+        queryset = self.get_queryset().filter(user=user)
+        data = OrderSerializer(queryset,many=True).data
+        return Response({'orders':data})
+        
+
+class OrderDetailAPI(generics.RetrieveAPIView):
+    serializer_class = OrderDetailSerializer
+    queryset = Order.objects.all()
+
+
+class CreateOrder(generics.GenericAPIView):
+    def post(self,request,*args, **kwargs):
+        user = User.objects.get(username=self.kwargs['username'])
+        cart = Cart.objects.get(user=user,completed=False)
+        cart_detail = CartDetail.objects.filter(cart=cart)
+        
+        # create order
+        new_order = Order.objects.create(user=user)
+        for object in cart_detail:
+            OrderDetail.objects.create(
+                order=new_order,
+                product = object.product , 
+                price = object.price , 
+                quantity = object.quantity , 
+                total = object.total
+            )
+            
+        cart.completed = True
+        cart.save()
+        return Response({'status':200 , 'message':'order was completed successfully '})
