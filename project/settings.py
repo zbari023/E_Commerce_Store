@@ -175,3 +175,5 @@ REST_AUTH = {
     'USE_JWT': True,
     'JWT_AUTH_COOKIE': 'jwt-auth',
 }
+
+LOCALE_PATHS = ['locale']
