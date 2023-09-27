@@ -178,3 +178,7 @@ REST_AUTH = {
 }
 
 LOCALE_PATHS = ['locale']
+LANGUAGES = [
+    ("de", ("German")),
+    ("en", ("English")),
+]
