@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-09-27 21:22+0200\n"
+"POT-Creation-Date: 2023-09-27 22:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
 #: .\products\models.py:18 .\products\models.py:48
 msgid "name"
 msgstr "Name"
@@ -68,3 +69,21 @@ msgstr "Durchschnitt"
 #: .\products\models.py:87
 msgid "create date"
 msgstr "Generat_Datum"
+
+#: .\templates\base.html:173
+msgid "Home"
+msgstr "Start"
+
+#: .\templates\base.html:176
+msgid "Shop"
+msgstr "Shoping"
+
+#: .\templates\base.html:179
+#, fuzzy
+#| msgid "brand"
+msgid "Brands"
+msgstr "Marke"
+
+#: .\templates\base.html:182
+msgid "Orders"
+msgstr "Bestellungen"
