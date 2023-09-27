@@ -63,7 +63,7 @@ msgstr "Commentre"
 
 #: .\products\models.py:86
 msgid "rate"
-msgstr "Duchschnitt"
+msgstr "Durchschnitt"
 
 #: .\products\models.py:87
 msgid "create date"
