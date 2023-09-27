@@ -19,52 +19,52 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 #: .\products\models.py:18 .\products\models.py:48
 msgid "name"
-msgstr ""
+msgstr "Name"
 
 #: .\products\models.py:19
 msgid "decsription"
-msgstr ""
+msgstr "Beschreibung"
 
 #: .\products\models.py:20
 msgid "sku"
-msgstr ""
+msgstr "SKU_code"
 
 #: .\products\models.py:21
 msgid "price"
-msgstr ""
+msgstr "Price"
 
 #: .\products\models.py:22
 msgid "subtitle"
-msgstr ""
+msgstr "Kurze_Info"
 
 #: .\products\models.py:23 .\products\models.py:43 .\products\models.py:49
 msgid "image"
-msgstr ""
+msgstr "Bild"
 
 #: .\products\models.py:24
 msgid "brand"
-msgstr ""
+msgstr "Marke"
 
 #: .\products\models.py:25
 msgid "Flag"
-msgstr ""
+msgstr "Art"
 
 #: .\products\models.py:42 .\products\models.py:84
 msgid "product"
-msgstr ""
+msgstr "Product"
 
 #: .\products\models.py:83
 msgid "user"
-msgstr ""
+msgstr "Benuzer"
 
 #: .\products\models.py:85
 msgid "review"
-msgstr ""
+msgstr "Commentre"
 
 #: .\products\models.py:86
 msgid "rate"
-msgstr ""
+msgstr "Duchschnitt"
 
 #: .\products\models.py:87
 msgid "create date"
-msgstr ""
+msgstr "Generat_Datum"
