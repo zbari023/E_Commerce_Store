@@ -79,8 +79,6 @@ msgid "Shop"
 msgstr "Shoping"
 
 #: .\templates\base.html:179
-#, fuzzy
-#| msgid "brand"
 msgid "Brands"
 msgstr "Marke"
 
