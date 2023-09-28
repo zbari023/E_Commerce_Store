@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'django_filters',
     'dj_rest_auth',
     'rosetta',
+    'tof',
     
 ]
 
