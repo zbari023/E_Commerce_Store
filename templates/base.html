@@ -32,7 +32,7 @@
         =======================================-->
         <!-- FAVICON -->
         <link rel="icon" href="images/favicon.png">
-        {% if LANGUAGE_CODE == 'en' %}
+        {% if LANGUAGE_CODE == 'en' or LANGUAGE_CODE == 'de' %}
             <!-- FONTS -->
             <link rel="stylesheet" href="{% static 'ltr/fonts/flaticon/flaticon.css' %}">
             <link rel="stylesheet" href="{% static 'ltr/fonts/icofont/icofont.min.css' %}">
@@ -891,7 +891,7 @@
         <!--=====================================
                     JS LINK PART START
         =======================================-->
-        {% if LANGUAGE_CODE == 'en' %}
+        {% if LANGUAGE_CODE == 'en' or LANGUAGE_CODE == 'de'%}
             <!-- VENDOR -->
             <script src="{% static 'ltr/vendor/bootstrap/jquery-1.12.4.min.js' %}"></script>
             <script src="{% static 'ltr/vendor/bootstrap/popper.min.js' %}"></script>
