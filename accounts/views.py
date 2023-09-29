@@ -23,18 +23,32 @@ def dashboard(request):
     new_products = Product.objects.filter(flag='New').count()
     sale_products = Product.objects.filter(flag='Sale').count()
     feature_products = Product.objects.filter(flag='Feature').count()
+    
+    
     brands = Brand.objects.all().count() 
     products = Product.objects.all().count()
     reviews = Reviews.objects.all().count()
-    user = User.objects.all().count()
+    users = User.objects.all().count()
     orders = Order.objects.all().count()
+    
+    recieved = Order.objects.filter(ORDER_STATUS ='recieved ').count()
+    processed = Order.objects.filter(ORDER_STATUS ='processed').count()
+    shipped = Order.objects.filter(ORDER_STATUS ='shipped').count()
+    delivered = Order.objects.filter(ORDER_STATUS ='delivered').count()
+    
     return render(request,'registration/dashboard.html',{
         'new_products':new_products ,
         'sale_products':sale_products ,
         'feature_products':feature_products,
-        'user':user,
+        
+        'users':users,
         'products':products,
         'reviews':reviews,
         'brands':brands,
-        'orders':orders
+        'orders':orders,
+        
+        'recieved':recieved,
+        'processed':processed,
+        'shipped':shipped,
+        'delivered':delivered
     })
