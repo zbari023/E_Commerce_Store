@@ -31,10 +31,10 @@ def dashboard(request):
     users = User.objects.all().count()
     orders = Order.objects.all().count()
     
-    recieved = Order.objects.filter(status ='recieved ').count()
-    processed = Order.objects.filter(status ='processed').count()
-    shipped = Order.objects.filter(status ='shipped').count()
-    delivered = Order.objects.filter(status ='delivered').count()
+    recieved = Order.objects.filter(status='recieved').count()
+    processed = Order.objects.filter(status='processed').count()
+    shipped = Order.objects.filter(status='shipped').count()
+    delivered = Order.objects.filter(status='delivered').count()
     
     return render(request,'registration/dashboard.html',{
         'new_products':new_products ,

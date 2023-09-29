@@ -48,10 +48,10 @@
         new Chart(ctx2, {
         type: 'pie',
         data: {
-            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            labels: ['Recieved', 'Processed', 'Shipped', 'Delivered'],
             datasets: [{
             label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
+            data: ["{{recieved}}","{{processed}}","{{shipped}}","{{delivered}}"],
             borderWidth: 1
             }]
         },
@@ -63,14 +63,16 @@
             }
         }
         });
+
+
         const ctx3 = document.getElementById('myChart3');
         new Chart(ctx3, {
             type: 'pie',
             data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                labels: ['Sale', 'New', 'Feature'],
                 datasets: [{
                 label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
+                data: ["{{new_products}}", "{{sale_products}}", "{{feature_products}}"],
                 borderWidth: 1
                 }]
             },
