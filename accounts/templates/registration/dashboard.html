@@ -6,10 +6,14 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-4">
-            
                 <canvas id="myChart"></canvas>
-            
         </div>
+        <div class="col-lg-4">
+            <canvas id="myChart2"></canvas>
+    </div>
+    <div class="col-lg-4">
+        
+</div>
     </div>
 </div>
 
@@ -21,6 +25,27 @@
     
         new Chart(ctx, {
         type: 'bar',
+        data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+            y: {
+                beginAtZero: true
+            }
+            }
+        }
+        });
+
+        const ctx2 = document.getElementById('myChart2');
+    
+        new Chart(ctx2, {
+        type: 'pie',
         data: {
             labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
             datasets: [{

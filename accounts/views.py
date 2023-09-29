@@ -1,6 +1,9 @@
 from django.shortcuts import render , redirect
 from .forms import SignupForm , ActivateUser
 from .models import Profile , Phones , Address
+from products.models import Product , Reviews
+from orders.models import Order
+from django.contrib.auth.models import User
 
 # Create your views here.
 def signup(request):
@@ -17,4 +20,11 @@ def signup(request):
 
 
 def dashboard(request):
-    return render(request,'registration/dashboard.html',{})
+    new_products = Product.objects.filter(flag='New').count()
+    sale_products = Product.objects.filter(flag='Sale').count()
+    feature_products = Product.objects.filter(flag='Feature').count()
+    return render(request,'registration/dashboard.html',{
+        'new_products':new_products ,
+        'sale_products':sale_products ,
+        'feature_products':feature_products
+    })
