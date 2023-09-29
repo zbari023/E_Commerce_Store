@@ -5,13 +5,14 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-m-4 col-sm-4 my-5">
                 <canvas id="myChart"></canvas>
         </div>
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-m-4 col-sm-4 my-5">
             <canvas id="myChart2"></canvas>
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-4 col-m-4 col-sm-4 my-5">
+        <canvas id="myChart3"></canvas>
         
 </div>
     </div>
@@ -62,5 +63,24 @@
             }
         }
         });
+        const ctx3 = document.getElementById('myChart3');
+        new Chart(ctx3, {
+            type: 'pie',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3],
+                borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                y: {
+                    beginAtZero: true
+                }
+                }
+            }
+            });
 </script>
 {% endblock body %}
