@@ -1,11 +1,12 @@
 from django.shortcuts import render , redirect
-
-# Create your views here.
 from django.views.generic import ListView
-from .models import Order , Cart ,CartDetail
+from .models import Order , Cart , CartDetail , Coupon
 from products.models import Product
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from settings.models import DeliveryFee
+import datetime
+from django.http import JsonResponse
+from django.template.loader import render_to_string
 
 
 class OrderList(LoginRequiredMixin, ListView):
@@ -16,7 +17,13 @@ class OrderList(LoginRequiredMixin, ListView):
         queryset = queryset.filter(user=self.request.user) # filter the current user
         return queryset
 
+def chackout_page(request):
 
+    
+    return render(request,'orders/checkout.html',{
+ 
+        })
+    
 def add_to_cart(request):
     # get data from frontend
     product = Product.objects.get(id=request.POST['product_id'])
