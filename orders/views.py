@@ -18,11 +18,48 @@ class OrderList(LoginRequiredMixin, ListView):
         return queryset
 
 def chackout_page(request):
+    cart = Cart.objects.get(user=request.user , completed=False)
+    cart_detail = CartDetail.objects.filter(cart=cart)
+    delivery_fee = DeliveryFee.objects.last()
+    
+    
+    if request.method == 'POST':
+        code = request.POST['coupon']
+        coupon = Coupon.objects.get(code=code)
+        if coupon and coupon.quantity > 0:
+            today_date = datetime.datetime.today().date()
+            if today_date >= coupon.start_date and today_date <= coupon.end_date:
+                code_value = cart.cart_total() / 100*coupon.percentage
+                sub_total = cart.cart_total() -  code_value
+                total = sub_total + delivery_fee.fee
+                
+                cart.coupon = coupon 
+                cart.total_with_coupon = sub_total
+                cart.save()
 
+                html = render_to_string('include/checkout_table.html',{
+                'cart_detail':cart_detail , 
+                'delivery_fee' : delivery_fee , 
+                'sub_total': round(sub_total,2) , 
+                'total': round(total,2) , 
+                'discount': round(code_value,2) , 
+                request:request
+                })
+                return JsonResponse({'result':html})
+    
+    
+    sub_total = cart.cart_total()
+    discount = 0
+    total = sub_total + delivery_fee.fee
     
     return render(request,'orders/checkout.html',{
- 
+        'cart_detail':cart_detail , 
+        'delivery_fee' : delivery_fee , 
+        'sub_total': round(sub_total,2) , 
+        'total': round(total,2) , 
+        'discount': round(discount,2)
         })
+    
     
 def add_to_cart(request):
     # get data from frontend
