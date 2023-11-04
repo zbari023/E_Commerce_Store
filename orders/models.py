@@ -24,7 +24,8 @@ class Order(models.Model):
     order_time = models.DateTimeField(default=timezone.now)
     delivery_time = models.DateTimeField(null=True , blank=True)
     delivery_location = models.ForeignKey(Address,related_name='delivery_address', on_delete=models.SET_NULL, null=True)
-    
+    coupon = models.ForeignKey('Coupon',related_name='order_coupon',on_delete=models.SET_NULL , null=True,blank=True)
+    total_with_coupon = models.FloatField(null=True,blank=True)
     def __str__(self):
         return self.code
     
@@ -70,8 +71,8 @@ class CartDetail(models.Model):
 class Coupon(models.Model):
     code = models.CharField(max_length=30)
     percentage = models.FloatField()
-    start_date = models.DateTimeField(default=timezone.now)
-    end_date = models.DateTimeField(default=timezone.now)
+    start_date = models.DateField(default=timezone.now)
+    end_date = models.DateField(default=timezone.now)
     quantity = models.IntegerField()
     def __str__(self):
         return self.code
