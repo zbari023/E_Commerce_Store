@@ -186,3 +186,5 @@ LANGUAGES = [
     ("en", ("English")),
     ("ar", ("Arabic")),
 ]
+
+AUTHENTICATION_BACKENDS = ['accounts.backends.EmailBackend']
