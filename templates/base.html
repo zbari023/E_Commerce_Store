@@ -139,7 +139,11 @@
                     
                     {% if request.user.is_authenticated %}
                         <a href="login.html" class="header-widget" title="My Account">
-                            <img src="{{request.user.user_profile.image.url}}" alt="user">
+                            {% if request.user.user_profile.image %}
+                                <img src="{{request.user.user_profile.image.url}}" alt="user">
+                            {% else %}
+                                <img src="{% static 'ltr/images/user.png' %}" alt="user">
+                            {% endif %}
                         </a>
                     {% else %}
                         <a href="/accounts/login" class="header-widget" title="My Account">
