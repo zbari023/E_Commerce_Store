@@ -4,6 +4,8 @@ from .forms import ReviewForm
 from .models import Product , ProductsImages , Brand , Reviews
 from django.db.models.aggregates import Count , Sum , Avg , Max ,Min
 from django.db.models import F , Q , Value , Func
+from django.http import JsonResponse
+from django.template.loader import render_to_string
 # Create your views here.
 
 
@@ -47,8 +49,9 @@ def add_review(request,slug):
         myform.user = request.user
         myform.product = product
         myform.save()
-        return redirect(f'/products/{product.slug}')
-
+        reviews = Reviews.objects.filter(product=product)
+        html = render_to_string('include/all_reviews.html',{'reviews':reviews, request:request})
+        return JsonResponse({'result':html})
 
 
     

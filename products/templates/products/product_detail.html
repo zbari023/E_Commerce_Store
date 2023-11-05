@@ -138,32 +138,8 @@
                         </div>
                         <div class="product-details-frame">
                             <h3 class="frame-title">Reviews ({{object.product_review.all|length}})</h3>
-                            <ul class="review-list">
-                                {% for review in object.product_review.all %}
-                                <li class="review-item">
-                                    <div class="review-media">
-                                        <a class="review-avatar" href="#">
-                                            <img src="images/avatar/01.jpg" alt="review">
-                                        </a>
-                                        <h5 class="review-meta">
-                                            <a href="#">{{review.user}}</a>
-                                            <span>June 02, 2020</span>
-                                            <span>{{review.create_date}}</span>
-
-                                        </h5>
-                                    </div>
-                                    <ul class="review-rating">
-                                        <li class="icofont-ui-{% if review.rate > 0 %}rating{% else %}rate-blank{% endif %}"></li>
-                                        <li class="icofont-ui-{% if review.rate > 1 %}rating{% else %}rate-blank{% endif %}"></li>
-                                        <li class="icofont-ui-{% if review.rate > 2 %}rating{% else %}rate-blank{% endif %}"></li>
-                                        <li class="icofont-ui-{% if review.rate > 3 %}rating{% else %}rate-blank{% endif %}"></li>
-                                        <li class="icofont-ui-{% if review.rate > 4 %}rating{% else %}rate-blank{% endif %}"></li>
-                                    </ul>
-                                    <p class="review-desc">{{review.review}}</p>
-                                    
-                                </li>
-                                {% endfor %}
-                                
+                            <ul class="review-list" id="all-reviews">
+                                {% include 'include/all_reviews.html' %}
                             </ul>
                         </div>
                         <div class="product-details-frame">
@@ -696,19 +672,21 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 <script>
     $(document).ready(function(e){
-        $(document).on('submit','#reviewForm',function(e){
-            e.preventDefault();
-            console.log('Bari')
-            $.ajax({
-                type: $(this).attr('method'),
-                url: $(this).attr('action'),
-                data: $(this).serialize,
-                dataType:'json',
-                success:function(response){
 
+        // submit reviewForm
+        $(document).on('submit','#reviewForm',function(e){
+            e.preventDefault(); // refresh
+            
+            $.ajax({
+                type: $(this).attr('method') , 
+                url: $(this).attr('action') , 
+                data: $(this).serialize(),
+                dataType: 'json',
+                success:function(response){
+                    $('#all-reviews').html(response['result'])
+                    $("#reviewForm").trigger('reset');
                 }
             })
         })
-    })
 </script>
         {% endblock body %}
