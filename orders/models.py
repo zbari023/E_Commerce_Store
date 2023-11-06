@@ -45,8 +45,9 @@ class OrderDetail(models.Model):
 class Cart(models.Model):
     user = models.ForeignKey(User,related_name='user_cart' , on_delete=models.SET_NULL , null=True , blank=True)
     completed = models.BooleanField(default=False)
-    def __str__(self):
-        return str(self.user)
+    coupon = models.ForeignKey('Coupon',related_name='cart_coupon',on_delete=models.SET_NULL , null=True,blank=True)
+    total_with_coupon = models.FloatField(null=True,blank=True)
+
 
     def cart_total(self):
         total = 0
