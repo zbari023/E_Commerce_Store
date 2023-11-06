@@ -669,24 +669,53 @@
         <!--=====================================
                  PRODUCT RELATED PART END
         =======================================-->
-<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-<script>
-    $(document).ready(function(e){
+        <script
+        src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"
+        ></script>
+        <script>
+            $(document).ready(function(e){
 
-        // submit reviewForm
-        $(document).on('submit','#reviewForm',function(e){
-            e.preventDefault(); // refresh
-            
-            $.ajax({
-                type: $(this).attr('method') , 
-                url: $(this).attr('action') , 
-                data: $(this).serialize(),
-                dataType: 'json',
-                success:function(response){
-                    $('#all-reviews').html(response['result'])
-                    $("#reviewForm").trigger('reset');
-                }
+                // submit reviewForm
+                $(document).on('submit','#reviewForm',function(e){
+                    e.preventDefault(); // refresh
+                    
+                    $.ajax({
+                        type: $(this).attr('method') , 
+                        url: $(this).attr('action') , 
+                        data: $(this).serialize(),
+                        dataType: 'json',
+                        success:function(response){
+                            $('#all-reviews').html(response['result'])
+                            $("#reviewForm").trigger('reset');
+                        }
+                    })
+                })
+
+
+                // add to cart 
+                $(document).on('submit','#add-to-cart-form',function(e){
+                    e.preventDefault(); // refresh
+                    
+                    $.ajax({
+                        type: $(this).attr('method') , 
+                        url: $(this).attr('action') , 
+                        data: $(this).serialize(),
+                        dataType: 'json',
+                        success:function(response){
+                            $('#cart-sidebar').html(response['result'])
+                            var smallTag = $('#total_price');
+                            smallTag.text(response['total']);
+                        }
+                    })
+                })
+
+
             })
-        })
-</script>
-        {% endblock body %}
+        </script>
+
+
+
+
+  {% endblock body %}   
