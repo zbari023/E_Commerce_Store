@@ -89,7 +89,7 @@
                                 </ul>
                             </div>
                             <div class="details-add-group row">
-                                <form action="/orders/add_to_cart" method="post">
+                                <form id="add-to-cart-form" action="{% url 'orders:add_to_cart' %}" method="post">
                                     {% csrf_token %}
                                     <div class="col-lg-5">
                                         <input title="Quantity Number" type="text" name="quantity" value="1">
