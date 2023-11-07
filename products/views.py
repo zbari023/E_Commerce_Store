@@ -6,18 +6,20 @@ from django.db.models.aggregates import Count , Sum , Avg , Max ,Min
 from django.db.models import F , Q , Value , Func
 from django.http import JsonResponse
 from django.template.loader import render_to_string
+from django.views.decorators.cache import cache_page
 # Create your views here.
 
 
 
-
+@cache_page(60 * 1)
 def post_list_debug(request):   # QuerySet API reference
     # data = Product.objects.all()
     # data = Product.objects.filter(price__lt=30.6)    # filter return as list 
     # data = Product.objects.all().order_by('name')
     # data = Product.objects.select_related('brand').all() # onetoone and onetomany
     # data = Product.objects.aggregate(Count('id'))
-    data = Product.objects.aggregate(Max('price'))
+    # data = Product.objects.aggregate(Max('price'))
+    data = Product.objects.all()
     
     
     
