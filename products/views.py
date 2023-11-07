@@ -7,6 +7,7 @@ from django.db.models import F , Q , Value , Func
 from django.http import JsonResponse
 from django.template.loader import render_to_string
 from django.views.decorators.cache import cache_page
+from django.utils.decorators import method_decorator
 # Create your views here.
 
 
@@ -30,7 +31,7 @@ def post_list_debug(request):   # QuerySet API reference
 
 
 
-
+@method_decorator(cache_page(60 * 24), name='dispatch')
 class ProductList(generic.ListView):
     model = Product
     paginate_by=100
